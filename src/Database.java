@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author Tyler
+ *
+ */
 public class Database {
 	//TODO write Database class
 	public Database() {}

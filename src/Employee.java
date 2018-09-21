@@ -1,4 +1,4 @@
-//TODO Write Employee Class Javadoc
+//TODO Write Employee Class JavaDoc
 public class Employee implements AttributeInterface {
 	
 	/** Identification number */
@@ -14,7 +14,16 @@ public class Employee implements AttributeInterface {
 	/** Current department or classification */
 	private String department;
 	
-	//TODO Finish Employee Class
+	/**
+	 * 
+	 * 
+	 * @param person
+	 * @param id
+	 * @param phone
+	 * @param division
+	 * @param years
+	 * @param department
+	 */
 	public Employee(Person person, String id, String phone, String division, String years, String department) {
 		this.person = person;
 		this.id = id;
@@ -23,6 +32,18 @@ public class Employee implements AttributeInterface {
 		this.years = years;
 		this.department = department;
 	}
+	
+	/**
+	 * 
+	 * @param first
+	 * @param last
+	 * @param status
+	 * @param id
+	 * @param phone
+	 * @param division
+	 * @param years
+	 * @param department
+	 */
 	public Employee(String first, String last, Person.Status status, String id, String phone, String division, String years, String department) {
 		this.person = new Person(first, last, status);
 		this.id = id;
@@ -31,6 +52,7 @@ public class Employee implements AttributeInterface {
 		this.years = years;
 		this.department = department;
 	}
+	
 	
 	@Override
 	public boolean check(String attribute, String value) {

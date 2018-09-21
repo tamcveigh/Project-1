@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author Tyler
+ *
+ */
 public class Person {
 	
 	/** First name */
@@ -8,6 +12,11 @@ public class Person {
 	/** Marital Status */
 	private Status status;
 	
+	/**
+	 * 
+	 * @author Tyler
+	 *
+	 */
 	public enum Status{
 		Married,
 		Single,
@@ -15,32 +24,63 @@ public class Person {
 		Divorced;
 	}
 	
+	/**
+	 * 
+	 * @param first
+	 * @param last
+	 * @param status
+	 */
 	public Person(String first, String last, Status status) {
 		this.first = first;
 		this.last = last;
 		this.status = status;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getFirstName() {
 		return first;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLastName() {
 		return last;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getMaritalStatus() {
 		return status.toString();
 	}
 	
+	/**
+	 * 
+	 * @param fName
+	 */
 	public void setFirstName(String fName) {
 		this.first = fName;
 	}
 	
+	/**
+	 * 
+	 * @param lName
+	 */
 	public void setLastName(String lName) {
 		this.last = lName;
 	}
 	
+	/**
+	 * 
+	 * @param status
+	 * @return
+	 */
 	public Boolean setMaritalStatus(String status) {
 		switch(status) {
 		case "Married":

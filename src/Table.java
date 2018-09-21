@@ -15,7 +15,7 @@ public class Table <T extends AttributeInterface>{
 	private String title;
 	
 	/**
-	 * Default Constructor for Table class
+	 * Default Constructor for Table class, creates a null table
 	 */
 	public Table() {
 		this.head = null;
@@ -23,6 +23,21 @@ public class Table <T extends AttributeInterface>{
 		this.title = "";
 	}
 	
+	/**
+	 * 
+	 * @param head
+	 */
+	public Table(Node head) {
+		this.head = head;
+		this.tail = head;
+		this.title = "";
+	}
+	
+	/**
+	 * 
+	 * @param otherTable
+	 * @return
+	 */
 	public Table<T> difference(Table<T> otherTable){
 		
 		Table<T> newTable = new Table<T>();
@@ -84,6 +99,12 @@ public class Table <T extends AttributeInterface>{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param attribute
+	 * @param value
+	 * @return
+	 */
 	public Table<T> select(String attribute, String value){
 		
 		Table<T> newTable = new Table<T>();
@@ -107,6 +128,11 @@ public class Table <T extends AttributeInterface>{
 		
 	}
 	
+	/**
+	 * 
+	 * @param otherTable
+	 * @return
+	 */
 	public Table<T> union(Table<T> otherTable){
 		Table<T> newTable = new Table<T>();
 		
@@ -115,31 +141,57 @@ public class Table <T extends AttributeInterface>{
 		return newTable;
 	}
 	
-	private class Node{
+	/**
+	 * 
+	 * @author Tyler
+	 *
+	 */
+	public class Node{
 		
-		/**		 */
+		/** The data stored in the node	*/
 		private T data;
-		/**  */
+		/** The following node in the Linked List */
 		private Node next;
 		
+		/**
+		 * 
+		 * @param data
+		 * @param next
+		 */
 		public Node(T data, Node next) {
 			this.data = data;
 			this.next = next;
 		}
 		
-		T getData() {
+		/**
+		 * 
+		 * @return
+		 */
+		public T getData() {
 			return this.data;
 		}
 		
-		Node getNext() {
+		/**
+		 * 
+		 * @return
+		 */
+		public Node getNext() {
 			return this.next;
 		}
 		
-		void setData(T data){
+		/**
+		 * 
+		 * @param data
+		 */
+		public void setData(T data){
 			this.data = data;
 		}
 		
-		void setNext(Node next) {
+		/**
+		 * 
+		 * @param next
+		 */
+		public void setNext(Node next) {
 			this.next = next;
 		}
 	}
