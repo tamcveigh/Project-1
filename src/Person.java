@@ -98,5 +98,14 @@ public class Person {
 		default:
 			return false;
 		}
+		
+		
 	}
+	
+	public Person copy() {
+		String firstCopy = this.first.toCharArray().toString();
+		String lastCopy = this.last.toCharArray().toString();
+		return new Person(firstCopy, lastCopy, this.status);
+	}
+	
 }

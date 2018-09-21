@@ -116,8 +116,11 @@ public class Employee implements AttributeInterface {
 
 	@Override
 	public AttributeInterface makeCopy() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Person copyPerson = this.person.copy();
+		
+		
+		return new Employee(copyPerson, department, department, department, department, department);
 	}
 
 }

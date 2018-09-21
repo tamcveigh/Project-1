@@ -3,8 +3,9 @@
  * 
  * @author Tyler M. and P.
  *
- * @param <T> The data type of the data stored in the table
+ * @param <T> The datatype of the data stored in the table
  */
+//TODO Finish Table Class JavaDoc
 public class Table <T extends AttributeInterface>{
 	
 	/** */
@@ -34,15 +35,41 @@ public class Table <T extends AttributeInterface>{
 	}
 	
 	/**
+	 * This method returns a new table containing copies of the nodes
+	 * that are in this table, but NOT in the other table provided
 	 * 
-	 * @param otherTable
-	 * @return
+	 * @param otherTable The other table to be compared against
+	 * @return A new table containing the unique nodes in this table
 	 */
 	public Table<T> difference(Table<T> otherTable){
 		
 		Table<T> newTable = new Table<T>();
+		boolean found = false;
 		
-		//TODO Write difference
+		for(Node thisCurrent = this.head; thisCurrent != null; thisCurrent = thisCurrent.next) {
+			
+			found = false;
+			
+			for(Node otherCurrent = otherTable.head; otherCurrent != null && !(found); otherCurrent = otherCurrent.next) {
+				
+				if(thisCurrent.data.equals(otherCurrent.data)) {
+					found = true;
+				}
+				
+			}
+			if(found == false) {
+				//TODO Write code that doesn't throw this warning
+				T copy = (T) thisCurrent.data.makeCopy();
+				
+				if (newTable.head != null) {
+					newTable.tail.next = new Node(copy, null);
+					newTable.tail = newTable.tail.next;
+				}else {
+					newTable.head = newTable.tail = new Node(copy, null);
+				}
+				
+			}
+		}
 		
 		return newTable;
 		
@@ -66,11 +93,48 @@ public class Table <T extends AttributeInterface>{
 		this.tail = newNode;
 	}
 	
+	/**
+	 * 
+	 * @param attribute
+	 * @param value
+	 * @param table
+	 * @return
+	 */
 	public Table<T> intersect(String attribute, String value, Table<T> table){
 		
 		Table<T> newTable = new Table<T>();
 		
-		//TODO Write intersect
+		for(Node thisCurrent = this.head; thisCurrent != null; thisCurrent = thisCurrent.next) {
+			
+			if( thisCurrent.data.check(attribute, value) ) {
+				//TODO Write code that doesn't throw this warning
+				T copy = (T) thisCurrent.data.makeCopy();
+				
+				if (newTable.head != null) {
+					newTable.tail.next = new Node(copy, null);
+					newTable.tail = newTable.tail.next;
+				}else {
+					newTable.head = newTable.tail = new Node(copy, null);
+				}
+			}
+			
+		}
+		
+		for(Node otherCurrent = table.head; otherCurrent != null; otherCurrent = otherCurrent.next) {
+			
+			if( otherCurrent.data.check(attribute, value) ) {
+				//TODO Write code that doesn't throw this warning
+				T copy = (T) otherCurrent.data.makeCopy();
+				
+				if (newTable.head != null) {
+					newTable.tail.next = new Node(copy, null);
+					newTable.tail = newTable.tail.next;
+				}else {
+					newTable.head = newTable.tail = new Node(copy, null);
+				}
+			}
+			
+		}
 		
 		return newTable;
 	}
@@ -115,10 +179,14 @@ public class Table <T extends AttributeInterface>{
 			
 			if(currentData.check(attribute, value)) {
 				
-				AttributeInterface copy = currentData.makeCopy();
+				T copy = (T) currentData.makeCopy();
 				
-				
-				//TODO Write data copy for select
+				if (newTable.head != null) {
+					newTable.tail.next = new Node(copy, null);
+					newTable.tail = newTable.tail.next;
+				}else {
+					newTable.head = newTable.tail = new Node(copy, null);
+				}
 				
 			}
 			
@@ -129,14 +197,39 @@ public class Table <T extends AttributeInterface>{
 	}
 	
 	/**
+	 * The method searches through this table and the other table given to find 
+	 * the data that is in both.
 	 * 
-	 * @param otherTable
-	 * @return
+	 * @param otherTable The table to be compared against
+	 * @return a new table containing only the data that is in both tables
 	 */
 	public Table<T> union(Table<T> otherTable){
 		Table<T> newTable = new Table<T>();
+		boolean found = false;
 		
-		//TODO write union method
+		for(Node thisCurrent = this.head; thisCurrent != null; thisCurrent = thisCurrent.next) {
+			
+			for(Node otherCurrent = otherTable.head; otherCurrent != null && !(found); otherCurrent = otherCurrent.next) {
+				
+				if(thisCurrent.data.equals(otherCurrent.data)) {
+					
+					found = true;
+					
+					//TODO Write code that doesn't throw this warning
+					T copy = (T) thisCurrent.data.makeCopy();
+					
+					if (newTable.head != null) {
+						newTable.tail.next = new Node(copy, null);
+						newTable.tail = newTable.tail.next;
+					}else {
+						newTable.head = newTable.tail = new Node(copy, null);
+					}
+					
+				}
+				
+			}
+			
+		}
 		
 		return newTable;
 	}
